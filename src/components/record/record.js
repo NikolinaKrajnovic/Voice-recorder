@@ -29,7 +29,7 @@ class Record extends Component {
     onData(recordedBlob) {}
     
     onStop(recordedBlob) {
-        
+        let storageRef =storage.ref();
         let date = new Date();
         let timeNow = date.toLocaleTimeString();
         const blobRef = storageRef.child(`audio/${timeNow}.mp3`);
