@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import "../../styles/timer.css";
+import "../../styles/time.css";
 
-class Timer extends Component {
+class Time extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,8 +31,8 @@ class Timer extends Component {
           return n > 9 ? "" + n : "0" + n;
         }
         return (
-          <div className="clockB">
-            <h6 className="clock">
+          <div className="timerDiv">
+            <h6 className="timer">
               {n(this.state.min)} : {n(this.state.sec)}
             </h6>
           </div>
@@ -50,4 +50,4 @@ class Timer extends Component {
       }
 }
  
-export default Timer;
+export default Time;

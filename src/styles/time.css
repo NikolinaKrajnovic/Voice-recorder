@@ -1,0 +1,20 @@
+.timerDiv{
+    width: 150px;
+    height: 150px;
+    background:black;
+    border-radius: 50%;
+    position: absolute;
+    left:45%;
+    top:5%;
+    border: 5px solid red;
+   
+}
+.timer{
+    font-size: 30px;
+    color:red;
+    font-weight: bolder;
+    position: relative;
+    top:35%;
+    
+    
+}
