@@ -28,42 +28,32 @@ class Recorder extends Component {
         });
     };
     
-    // obicna metoda koja nije lambda
-    // onData(recordedBlob) {}
 
-    // lambda metoda
-    // onData = (recordedBlob) => {}
-    
-    // on stop mora da bude async funkcija kako bi sa await mogao da joj kazem da saceka izvrsavanje promisa
-    // takodje sam metodu morala da promenim u lambda metodu kako bi iz nje moglo da se pozove setState
     onStop = async (recordedBlob) => {
         let storageRef =storage.ref();
         let date = new Date();
         let timeNow = date.toLocaleTimeString();
         const blobRef = storageRef.child(`audio/${timeNow}.mp3`);
-        // Napravio sam golbalnu varijablu koja ce da dobije vrednost i nju cu da sacuvam u state
         let URL = '';
         
         try {
-            // sa await kazem da saceka da se ova funkcija izvrsi pa tek da onda nastavi dalje izvrsavanje programa
+            
             await blobRef.put(recordedBlob.blob).then(async (snapshot) => {
                 console.log(recordedBlob.blob)
                 storage.ref('audio').child(timeNow + '.mp3')
                 alert("Recorder Success!!!");
                 console.log("Upload MP3 to firebase");
 
-                
-                // ovde isto kazem da saceka 
                 await storage.ref('audio').child(timeNow + '.mp3').getDownloadURL()
                 .then((url) => {
                     console.log('url', url);
-                    // ovde samo dodelim vrednost globalnoj
+                   
                     URL = url
                 });
             });
 
             console.log('URL', URL);
-            // sad moze da se setuje state kada smo sacekali sa await da se izvrse 2 promisa 
+            
             this.setState({
                 downUrl: URL
             });
